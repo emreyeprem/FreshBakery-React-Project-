@@ -11,3 +11,89 @@ body{
 .heading{
   font-family: 'Cabin Sketch', cursive;
 }
+.dropdown:hover{
+  background: red !important;
+  cursor: pointer !important;
+  background-color: #343a40!important;
+  visibility: visible;
+  opacity: 1;
+  display: block;
+  color: #fff;
+}
+.dropbtn {
+  display:block !important;
+  color: #fff;
+  background-color: #343a40!important;
+/* background: darkorange; */
+  /* display: block; */
+  float: left;
+  position: relative;
+ font-weight: bolder;
+  /* text-decoration: none; */
+transition-duration: 0.5s ease;
+}
+
+.dropdown:hover .dropdown-menu {
+display: block;
+background-color: #343a40!important;
+opacity: 0.75;
+color:white !important;
+}
+.item-names{
+color: white !important;
+}
+.store-hours{
+/* background-color: hsla(0,0%,100%,.85); */
+}
+.work-schedule{
+  opacity: 0.9 !important;
+}
+.store-title-img{
+  opacity: 0.5 !important;
+}
+.store-title-imgA{
+  opacity: 0.4 !important;
+  transform: scale(0.9) !important;
+}
+.store-title-imgS{
+  opacity: 0.4 !important;
+  transform: scale(0.5) !important;
+  margin-top: -6vw !important;
+}
+.navbar-ContainerA{
+  margin-top: -6vw !important;
+}
+.navbar-ContainerS{
+  margin-top: -10vw !important;
+}
+.headingP{
+font-family: 'Codystar', cursive;
+font-size: 3vw !important;
+font-weight: bold;
+}
+.titleContainer{
+  color: black;
+  text-decoration: none !important;
+}
+.sbitebox{
+  width:465px !important;
+}
+.portfoliobox{
+    margin-bottom: 2vw !important;
+}
+.smbiteContainer{
+  background:linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url('./bimg.png') !important;
+}
+.fa-codepen{
+  display:none !important;
+}
+.fa-link{
+  display:none !important;
+}
+.titleabout{
+  opacity: 0.5 !important;
+}
+.cookieslogan{
+  font-family: 'Amita', cursive;
+  font-size: 2vw !important;
+}

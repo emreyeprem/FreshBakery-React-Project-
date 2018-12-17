@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import {Link, NavLink} from 'react-router-dom'
 import '../assets/bootstrap/css/bootstrap.min.css'
 import '../assets/bootstrap/css/homepage.css'
 
-class Header extends Component {
+class Beverages extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -16,11 +17,7 @@ class Header extends Component {
 
 
     return(
-      <div>
-
-      
-
-      </div>
+         <div></div>
     )
   }
 }
@@ -46,4 +43,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Header))
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Beverages))

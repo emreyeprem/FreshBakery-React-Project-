@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import {Link, NavLink} from 'react-router-dom'
 import '../assets/bootstrap/css/bootstrap.min.css'
 import '../assets/bootstrap/css/homepage.css'
 
@@ -18,23 +19,50 @@ class HomePage extends Component {
     return(
       <div classNameName="homepageContainer">
 
-      <h1 className="text-center text-white d-none d-lg-block site-heading" data-aos="zoom-in-up" data-aos-duration="3000" data-aos-delay="300"><span className="text-monospace text-capitalize text-center text-primary site-heading-upper mb-3 tart" data-aos="slide-right" data-aos-duration="2000" data-aos-delay="100"><em>The &nbsp;Little &nbsp;Tart</em></span>
+      <h1 className="text-center text-white d-none d-lg-block site-heading" data-aos="zoom-in-up" data-aos-duration="3000" data-aos-delay="300"><span className="text-monospace text-capitalize text-center text-secondary site-heading-upper mb-3 tart" data-aos="slide-right" data-aos-duration="2000" data-aos-delay="100"><em>The &nbsp;Little &nbsp;Tart</em></span>
           <span
               className="shadow site-heading-lower heading" data-aos="flip-down" data-aos-duration="3000" data-aos-once="true">FRESH BAKERY &amp; Coffee</span>
       </h1>
+
       <nav className="navbar navbar-light navbar-expand-lg bg-dark py-lg-4" id="mainNav">
           <div className="container"><a className="navbar-brand text-uppercase d-lg-none text-expanded" href="#">Fresh Bakery</a><button className="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
               <div
                   className="collapse navbar-collapse" id="navbarResponsive">
                   <ul className="nav navbar-nav mx-auto">
                       <li className="nav-item" role="presentation"><a className="nav-link" href="/">Home</a></li>
-                      <li className="nav-item" role="presentation"><a className="nav-link" href="/about">About us</a></li>
-                      <li className="nav-item" role="presentation"><a className="nav-link" href="/products">Products</a></li>
-                      <li className="nav-item" role="presentation"><a className="nav-link" href="/store">Store</a></li>
-                  </ul>
-          </div>
+                      <li className="nav-item" role="presentation"><a className="nav-link" href="about">About us</a></li>
+
+
+        <ul className="dropdown">
+            <Link to="/products"><button className="btn btn-default dropdown-toggle dropbtn" type="button" data-toggle="dropdown" data-hover="dropdown">Products<span className="caret"></span></button></Link>
+              <ul className="dropdown-menu">
+                  <Link to="/cakes"><li className="nav-item"><a href="#" >Cakes</a></li></Link>
+                  <Link to="/breadpastry"><li className="nav-item"><a href="#" >Bread & Pastry</a></li></Link>
+                  <Link to="/smallbites"><li className="nav-item"><a href="#" >Small Bites</a></li></Link>
+                  <Link to="/beverages"><li className="nav-item"><a href="#" >Beverages</a></li></Link>
+              </ul>
+            </ul>
+
+                      <li className="nav-item" role="presentation"><a className="nav-link" href="store">Store</a></li>
+                      <li className="nav-item" role="presentation"><a className="nav-link" href="store">Shop</a></li>
+
+
+            <ul className="dropdown">
+              <button className="btn btn-default dropdown-toggle dropbtn" type="button" data-toggle="dropdown" data-hover="dropdown">
+               My Account <span className="caret"></span>
+              </button>
+              <ul className="dropdown-menu">
+                <li className="nav-item"><a href="#" >Login</a></li>
+                <li className="nav-item"><a href="#" >Register</a></li>
+              </ul>
+            </ul>
+
+
+       </ul>
+            </div>
           </div>
       </nav>
+
       <section className="page-section clearfix">
           <div className="container">
               <div className="intro"><img className="img-fluid intro-img mb-3 mb-lg-0 rounded" src="assets/img/Screen%20Shot%202018-12-14%20at%2010.24.59%20AM.png"/>

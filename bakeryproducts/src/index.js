@@ -9,11 +9,16 @@ import Footer from './components/Footer'
 import Header from './components/Header'
 import Search from './components/Search'
 import About from './components/About'
+import Store from './components/Store'
 import Login from './components/Login'
 import Register from './components/Register'
 import HomePage from './components/HomePage'
 import Products from './components/Products'
-import SubCategories from './components/SubCategories'
+import Coffee from './components/Coffee'
+import Cake from './components/Cake'
+import Beverages from './components/Beverages'
+import Breadpastry from './components/Breadpastry'
+import Smallbites from './components/Smallbites'
 import { createStore } from 'redux'
 import reducer from './store/reducer'
 import { Provider } from 'react-redux'
@@ -34,8 +39,13 @@ ReactDOM.render(
      <Route path="/login" component={Login}/>
      <Route path="/register" component={Register}/>
      <Route path="/about" component={About}/>
-     <Route path="/categories" component={Products} />
-     <Route path="/sub-categories" component={SubCategories} />
+     <Route path="/store" component={Store}/>
+     <Route path="/products" component={Products} />
+     <Route path="/coffee" component={Coffee} />
+     <Route path="/breadpastry" component={Breadpastry}/>
+     <Route path="/cakes" component={Cake}/>
+     <Route path="/smallbites" component={Smallbites}/>
+     <Route path="/beverages" component={Beverages}/>
 
    </Switch>
 
