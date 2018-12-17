@@ -10,7 +10,6 @@ import sbite3 from '../assets/img/sbite3.png'
 import sbite4 from '../assets/img/sbite4.png'
 import sbite5 from '../assets/img/sbite5.png'
 import sbite6 from '../assets/img/sbite6.png'
-import strawbery from '../assets/img/strawbery.png'
 import '../assets/bootstrap/css/bootstrap.mini.css'
 
 class Smallbites extends Component {
@@ -70,10 +69,10 @@ class Smallbites extends Component {
 
 
 
-         <section id="portfolio" className="content-section">
+         <section id="portfolio" className="content-section sbportDiv">
              <div className="container">
                  <div className="content-section-heading text-center">
-                     <h3 className=" mb-0 cookieslogan">Freshly Baked All Day.. Every Day..</h3>
+                     <h3 className="mb-0 cookieslogan">Freshly Baked All Day.. Every Day..</h3>
                      <h2 className="text-secondary mb-5" data-aos="fade-down" data-aos-duration="3000" data-aos-delay="200" data-aos-once="true">COOKIES &amp; BROWNIES</h2>
                  </div>
                  <div className="row no-gutters">
@@ -81,8 +80,9 @@ class Smallbites extends Component {
                          <a href="#" className="portfolio-item">
                              <div className="caption sbitebox">
                                  <div className="caption-content">
-                                     <h3 data-aos="zoom-in-left" data-aos-duration="3000" data-aos-delay="300" data-aos-once="true">Stationary</h3>
-                                     <p className="mb-0">A yellow pencil with envelopes on a clean, blue backdrop!</p>
+                                     <h3 data-aos="zoom-in-left" data-aos-duration="3000" data-aos-delay="300" data-aos-once="true">Sandwich Cookie</h3>
+                                     <p className="mb-0">A thin rectangular dark chocolate–flavoured biscuits with a chocolate buttercream filling!</p>
+                                     <button class="btn-change7">Shop</button>
                                  </div>
                              </div><img className="img-fluid" src={sbite1} /></a>
                      </div>
@@ -90,8 +90,9 @@ class Smallbites extends Component {
                          <a href="#" className="portfolio-item">
                              <div className="caption sbitebox">
                                  <div className="caption-content">
-                                     <h3 data-aos="zoom-in-left" data-aos-duration="3000" data-aos-delay="200" data-aos-once="true">Ice Cream</h3>
-                                     <p className="mb-0">A dark blue background with a colored pencil, a clip, and a tiny ice cream cone!</p>
+                                     <h3 data-aos="zoom-in-left" data-aos-duration="3000" data-aos-delay="200" data-aos-once="true">Chocolate Brownie</h3>
+                                     <p className="mb-0">A brownie topped with whipped cream, sprinkled with powdered sugar and fudge!</p>
+                                     <button class="btn-change7">Shop</button>
                                  </div>
                              </div><img className="img-fluid" src={sbite2} /></a>
                      </div>
@@ -99,8 +100,9 @@ class Smallbites extends Component {
                          <a href="#" className="portfolio-item">
                              <div className="caption sbitebox">
                                  <div className="caption-content">
-                                     <h3 data-aos="fade-down-left" data-aos-duration="3000" data-aos-delay="300" data-aos-once="true">Strawberries</h3>
-                                     <p className="mb-0">Strawberries are such a tasty snack, especially with a little sugar on top!</p>
+                                     <h3 data-aos="fade-down-left" data-aos-duration="3000" data-aos-delay="300" data-aos-once="true">Thumbprint Cookie</h3>
+                                     <p className="mb-0">Buttery soft cookies with a sweet surprise!</p>
+                                     <button class="btn-change7">Shop</button>
                                  </div>
                              </div><img className="img-fluid" src={sbite3} /></a>
                      </div>
@@ -108,8 +110,9 @@ class Smallbites extends Component {
                          <a href="#" className="portfolio-item">
                              <div className="caption sbitebox">
                                  <div className="caption-content">
-                                     <h3 data-aos="fade-down-left" data-aos-duration="3000" data-aos-delay="300" data-aos-once="true">Workspace</h3>
-                                     <p className="mb-0">A yellow workspace with some scissors, pencils, and other objects.</p>
+                                     <h3 data-aos="fade-down-left" data-aos-duration="3000" data-aos-delay="300" data-aos-once="true">Chocolate Chip Cookie</h3>
+                                     <p className="mb-0">A cookie composed of butter and both brown and white sugar, semi-sweet chocolate chips and vanilla..</p>
+                                     <button class="btn-change7">Shop</button>
                                  </div>
                              </div><img className="img-fluid" src={sbite4} /></a>
                      </div>
@@ -118,8 +121,9 @@ class Smallbites extends Component {
                          <a href="#" className="portfolio-item">
                              <div className="caption sbitebox">
                                  <div className="caption-content">
-                                     <h3 data-aos="fade-down-left" data-aos-duration="3000" data-aos-delay="300" data-aos-once="true">Strawberries</h3>
-                                     <p className="mb-0">Strawberries are such a tasty snack, especially with a little sugar on top!</p>
+                                     <h3 data-aos="fade-down-left" data-aos-duration="3000" data-aos-delay="300" data-aos-once="true">Coconut Cookie</h3>
+                                     <p className="mb-0">A cookie filled with mounds of coconut and chocolate are a delicious treat for the coconut lover!</p>
+                                     <button class="btn-change7">Shop</button>
                                  </div>
                              </div><img className="img-fluid" src={sbite5} /></a>
                      </div>
@@ -128,8 +132,9 @@ class Smallbites extends Component {
                          <a href="#" className="portfolio-item">
                              <div className="caption sbitebox">
                                  <div className="caption-content">
-                                     <h3 data-aos="fade-down-left" data-aos-duration="3000" data-aos-delay="300" data-aos-once="true">Strawberries</h3>
-                                     <p className="mb-0">Strawberries are such a tasty snack, especially with a little sugar on top!</p>
+                                     <h3 data-aos="fade-down-left" data-aos-duration="3000" data-aos-delay="300" data-aos-once="true">Muffin Cookie</h3>
+                                     <p className="mb-0">The perfect breakfast treat! Baked with the mixture of real strawberry and blueberry!</p>
+                                     <button class="btn-change7">Shop</button>
                                  </div>
                              </div><img className="img-fluid" src={sbite6} /></a>
                      </div>
@@ -139,6 +144,11 @@ class Smallbites extends Component {
              </div>
          </section>
 
+         <footer className="footer text-faded text-center py-5 footerContainerSB">
+             <div className="container">
+                 <p className="m-0 small">Copyright&nbsp;©&nbsp;Fresh Bakery 2018</p>
+             </div>
+         </footer>
 
 
          </div>

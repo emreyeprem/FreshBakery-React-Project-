@@ -6,7 +6,7 @@ body{
   background:linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url('./bg.jpg');
 }
 .tart{
-  font-family: 'Amita', cursive;
+  font-family: 'Amita', cursive !important;
 }
 .heading{
   font-family: 'Cabin Sketch', cursive;
@@ -80,6 +80,7 @@ font-weight: bold;
 }
 .portfoliobox{
     margin-bottom: 2vw !important;
+    position: relative !important;
 }
 .smbiteContainer{
   background:linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url('./bimg.png') !important;
@@ -96,4 +97,35 @@ font-weight: bold;
 .cookieslogan{
   font-family: 'Amita', cursive;
   font-size: 2vw !important;
+}
+.sbportDiv{
+  margin-top: -4vw !important;
+}
+.footerContainerSB{
+  background:linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url('./footer.png') !important;
+}
+
+
+.btn-change7{
+  position:absolute !important;
+  right: 0.4vw !important;
+  bottom: 0.7vw !important;
+  border-radius: 6% !important;
+  opacity: 0.5 !important;
+  font-weight: bold;
+  color: black !important;
+    height: 40px;
+    width: 100px;
+    background: lightseagreen;
+    margin: 20px;
+    float: left;
+    border:0px;
+    color:#fff;
+    box-shadow: 0 0 1px #ccc;
+    -webkit-transition-duration: 0.5s;
+    -webkit-transition-timing-function: linear;
+    box-shadow:0px 0 0 #31708f  inset;
+}
+.btn-change7:hover{
+    box-shadow:100px 0 0 yellow inset;
 }

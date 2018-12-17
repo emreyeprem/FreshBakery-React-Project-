@@ -5,7 +5,7 @@ import {Link, NavLink} from 'react-router-dom'
 import '../assets/bootstrap/css/bootstrap.min.css'
 import '../assets/bootstrap/css/homepage.css'
 import cake from '../assets/img/cake.png'
-import breadpastry from '../assets/img/pastry2.png'
+import breadpastry from '../assets/img/productimg2.png'
 import cookies from '../assets/img/cookies.png'
 
 class Products extends Component {
