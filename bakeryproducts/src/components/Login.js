@@ -6,6 +6,7 @@ import '../assets/bootstrap/css/bootstrap.min.css'
 import '../assets/bootstrap/css/homepage.css'
 import axios from 'axios'
 import history from '../history';
+import { setAuthenticationToken } from '../utils'
 
 
 class Login extends Component {
@@ -15,14 +16,16 @@ class Login extends Component {
        username : '',
        password : '',
        email : '',
-       message : ''
+       message : '',
+       checked : true
+
     }
   }
 
   getUsername = (e)=>{
       this.setState({
         ...this.state,
-        username : e.target.value
+        username : e.target.value,
 
       })
     }
@@ -55,7 +58,8 @@ class Login extends Component {
       }).then((response)=>{
       if(response.data.success == true){
        this.setState({
-         message: ''
+         message: '',
+         checked:true
        })
        this.props.history.push('/login')
       } else{
@@ -66,9 +70,56 @@ class Login extends Component {
   })
 }
 
+ getLoginUsername = (e)=> {
+   this.setState({
+     ...this.state,
+     username : e.target.value,
+   })
+ }
+
+ getLoginPassword = (e)=> {
+   this.setState({
+     ...this.state,
+     password : e.target.value
+   })
+ }
+
+  sendLoginUserToServer = ()=>{
+
+    let username = this.state.username
+    let password = this.state.password
+    axios.post('http://localhost:3005/api/login',{
+      username : username,
+      password : password
+    }).then((response)=>{
+      if(response.data == 'The username you entered is invalid!'){
+        this.setState({
+          message : response.data
+        })
+      } else if(response.data == 'The password you entered is incorrect!'){
+        this.setState({
+          message : response.data
+        })
+      } else{
+        this.props.authenticate()
+        localStorage.setItem('jsonwebtoken',response.data.token)
+        // put the token in the request header
+        setAuthenticationToken(response.data.token)
+        this.props.history.push('/')
+      }
+    }).catch((error)=>{
+      console.log(error)
+    })
+  }
+
  componentDidMount = () => {
+      this.props.notAuthenticate()
+ }
 
-
+ toggleSignScreen = () => {
+   this.setState({
+     checked: !this.state.checked
+   })
  }
 
   render() {
@@ -78,27 +129,27 @@ class Login extends Component {
 
     <div className="loginbody">
 
-
       <div className="login-wrap">
         <div className="login-html">
-         <input id="tab-1" type="radio" name="tab" className="sign-in" checked /><label for="tab-1" className="tab">Sign In</label>
-         <input id="tab-2" type="radio" name="tab" className="sign-up" /><label for="tab-2" className="tab">Sign Up</label>
-         <div className="login-form">
-           <div className="sign-in-htm">
+         <input id="tab-1" type="radio" name="tab" className="sign-in" onChange={this.toggleSignScreen} checked={this.state.checked} /><label for="tab-1" className="tab">Sign In</label>
+         <input id="tab-2" type="radio" name="tab" onChange={this.toggleSignScreen} className="sign-up" /><label for="tab-2" className="tab">Sign Up</label>
+         <div className='login-form'>
+           <div className='sign-in-htm'>
              <div className="group">
                <label for="user" className="label">Username</label>
-               <input id="user" type="text" className="input" />
+               <input onChange={this.getLoginUsername} id="user" type="text" className="input" />
              </div>
              <div className="group">
                <label for="pass" className="label">Password</label>
-               <input id="pass" type="password" className="input" data-type="password" />
+               <input onChange={this.getLoginPassword} id="pass" type="password" className="input" data-type="password" />
              </div>
              <div className="group">
                <input id="check" type="checkbox" className="check" checked />
                <label for="check"><span className="icon"></span> Keep me Signed in</label>
              </div>
              <div className="group">
-               <input type="submit" className="button" value="Sign In" />
+               <button onClick={this.sendLoginUserToServer} className="regButton"><input type="submit" className="button" value="Sign In" /></button>
+               <h3 className="message">{this.state.message}</h3>
              </div>
              <div className="hr"></div>
              <div className="foot-lnk">
@@ -155,8 +206,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     // this.props.onIncrementCounter
 
+    notAuthenticate: () => dispatch({type: "NOTAUTHENTICATED"}),
+    authenticate: () => dispatch({type: "AUTHENTICATED"})
 
   }
 }
 
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Login))
+export default connect(mapStateToProps,mapDispatchToProps)(Login)
