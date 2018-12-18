@@ -52,7 +52,7 @@ class HomePage extends Component {
                My Account <span className="caret"></span>
               </button>
               <ul className="dropdown-menu">
-                <li className="nav-item"><a href="#" >Login</a></li>
+                <Link to="/login"><li className="nav-item"><a href="#" >Login</a></li></Link>
                 <li className="nav-item"><a href="#" >Register</a></li>
               </ul>
             </ul>
