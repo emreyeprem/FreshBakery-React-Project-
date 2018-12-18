@@ -78,7 +78,7 @@ if(error.code == 42703 || error.received == 0){
     })
   })
 
-app.post('/login',function(req,res){
+app.post('/api/login',function(req,res){
   let username = req.body.username
   let email = req.body.email
   let password = req.body.password
@@ -94,7 +94,7 @@ app.post('/login',function(req,res){
             const token = jwt.sign({ userid : response.userid },"somesecretkey")
 
             // send back the token to the user
-            res.json({token: token})
+            res.json({token: token,user : response})
 
           } else {
             // password dont match

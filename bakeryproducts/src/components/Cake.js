@@ -47,16 +47,14 @@ class Cake extends Component {
                              </ul>
 
                          <li className="nav-item" role="presentation"><a className="nav-link" href="store">Store</a></li>
-                         <li className="nav-item" role="presentation"><a className="nav-link" href="store">Shop</a></li>
-
 
                <ul className="dropdown">
                  <button className="btn btn-default dropdown-toggle dropbtn" type="button" data-toggle="dropdown" data-hover="dropdown">
                   My Account <span className="caret"></span>
                  </button>
                  <ul className="dropdown-menu">
-                   <li className="nav-item"><a href="#" >Login</a></li>
-                   <li className="nav-item"><a href="#" >Register</a></li>
+                 <Link to="/login"><li className="nav-item"><a href="#" >Login</a></li></Link>
+                 <Link to="/login"><li className="nav-item"><a href="#" >Register</a></li></Link>
                  </ul>
                </ul>
 

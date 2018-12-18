@@ -44,7 +44,6 @@ class HomePage extends Component {
             </ul>
 
                       <li className="nav-item" role="presentation"><a className="nav-link" href="store">Store</a></li>
-                      <li className="nav-item" role="presentation"><a className="nav-link" href="store">Shop</a></li>
 
 
             <ul className="dropdown">
@@ -53,7 +52,7 @@ class HomePage extends Component {
               </button>
               <ul className="dropdown-menu">
                 <Link to="/login"><li className="nav-item"><a href="#" >Login</a></li></Link>
-                <li className="nav-item"><a href="#" >Register</a></li>
+                <Link to="/login"><li className="nav-item"><a href="#" >Register</a></li></Link>
               </ul>
             </ul>
 

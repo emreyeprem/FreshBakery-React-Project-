@@ -101,7 +101,8 @@ class Login extends Component {
           message : response.data
         })
       } else{
-        this.props.authenticate()
+        this.props.user(response.data.user)
+        this.props.authenticate(response.data.token)
         localStorage.setItem('jsonwebtoken',response.data.token)
         // put the token in the request header
         setAuthenticationToken(response.data.token)
@@ -113,7 +114,7 @@ class Login extends Component {
   }
 
  componentDidMount = () => {
-      this.props.notAuthenticate()
+
  }
 
  toggleSignScreen = () => {
@@ -206,8 +207,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     // this.props.onIncrementCounter
 
-    notAuthenticate: () => dispatch({type: "NOTAUTHENTICATED"}),
-    authenticate: () => dispatch({type: "AUTHENTICATED"})
+   authenticate: (token) => dispatch({type: "AUTHENTICATED", token: token}),
+   user: (user) => dispatch({type: "USER", user: user})
 
   }
 }

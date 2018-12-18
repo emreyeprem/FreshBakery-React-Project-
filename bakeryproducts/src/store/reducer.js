@@ -1,3 +1,6 @@
+// to get token from local storage
+let token = localStorage.getItem('jsonwebtoken')
+
 const initialState = {
   isAuthenticated : true,
 
