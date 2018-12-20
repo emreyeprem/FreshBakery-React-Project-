@@ -11,7 +11,8 @@ class Addtocart extends Component {
   constructor(props){
     super(props)
     this.state = {
-      quantity : 1
+      quantity : 1,
+      finalprice : this.props.obj.price
 
     }
   }
@@ -25,13 +26,29 @@ class Addtocart extends Component {
       console.log(totalPrice)
       this.setState({
         ...this.state,
-        totalprice: totalPrice
+        totalprice: totalPrice,
+        finalprice: totalPrice.toFixed(2)
+
       })
     }))
   }
-  subtotal = () =>{
+
+  addItemButton = () =>{
+  axios.post('http://localhost:3005/api/sendcart',{
+     title : this.props.obj.title,
+     quantity : this.state.quantity,
+     userid : this.props.userid,
+     price : this.props.obj.price,
+     finalprice : this.state.finalprice
+  }).then((response)=>{
+     console.log(response)
+     this.props.history.push('/yourcart')
+  })
 
   }
+
+
+
 
   render() {
 
@@ -41,9 +58,9 @@ class Addtocart extends Component {
 
 
       <div className="container ">
-<table id="cart" className="table table-hover table-condensed">
+       <table id="cart" className="table table-hover table-condensed">
         <thead>
-        <tr>
+        <tr className="trline">
           <th className="thproduct">Product</th>
           <th className="thprice">Price</th>
           <th className="thquantity">Quantity</th>
@@ -66,7 +83,7 @@ class Addtocart extends Component {
           <td className="itemDescription" data-th="Quantity">
             <input onChange={this.addQuantity} type="number" className="form-control text-center" placeholder="1" name="quantity" min="1" />
           </td>
-          <td data-th="Subtotal" className="text-center itemDescription">{this.state.totalprice}</td>
+          <td data-th="Subtotal" className="text-center itemDescription">{this.state.finalprice}</td>
           <td className="actions" data-th="">
             <button className="btn btn-info btn-sm"><i className="fa fa-refresh"></i></button>
             <button className="btn btn-danger btn-sm"><i className="fa fa-trash-o"></i></button>
@@ -76,10 +93,10 @@ class Addtocart extends Component {
       <tfoot>
 
         <tr>
-          <td><a href="#" className="btn btn-warning"><i className="fa fa-angle-left"></i> Continue Shopping</a></td>
+          <td><button className="btn btn-warning"><i className="fa fa-angle-left"></i> Continue Shopping</button></td>
           <td colspan="2" className="hidden-xs"></td>
-          <td className="hidden-xs text-center itemDescription"><strong>Total ${this.state.totalprice}</strong></td>
-          <td><a href="#" className="btn btn-success btn-block">Checkout <i className="fa fa-angle-right"></i></a></td>
+          <td className="hidden-xs text-center itemDescription"><strong>Total ${this.state.finalprice}</strong></td>
+          <td><button onClick={this.addItemButton} className="btn btn-success btn-block addtocartButton">Add to Cart <i className="fa fa-angle-right"></i></button></td>
         </tr>
       </tfoot>
     </table>
@@ -96,7 +113,8 @@ class Addtocart extends Component {
 // map global state to local props
 const mapStateToProps = (state) => {
   return {
-      obj : state.Obj
+      obj : state.Obj,
+      userid : state.userid
      //this.props.isAuthenticated
     //ctr: state.counter // this.props.ctr
   }

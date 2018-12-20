@@ -11,7 +11,8 @@ import Search from './components/Search'
 import About from './components/About'
 import Store from './components/Store'
 import Login from './components/Login'
-import Register from './components/Register'
+import Checkout from './components/Checkout'
+import Yourcart from './components/Yourcart'
 import HomePage from './components/HomePage'
 import Products from './components/Products'
 import Addtocart from './components/Addtocart'
@@ -37,7 +38,8 @@ ReactDOM.render(
      <Route exact path="/" component={HomePage} />
      <Route path="/search" component={Search} />
      <Route path="/login" component={Login}/>
-     <Route path="/register" component={Register}/>
+     <Route path="/checkout" component={Checkout}/>
+     <Route path="/yourcart" component={Yourcart}/>
      <Route path="/about" component={About}/>
      <Route path="/store" component={Store}/>
      <Route path="/products" component={Products} />

@@ -27,6 +27,76 @@ class Beverages extends Component {
     history.push('/')
    }
 
+
+   getMandheling = ()=>{
+     let mandhelingObj = {
+       title: 'Mandheling Blend',
+       description: 'Full bodied to be savor as a thick treat. Traces of chocolate, earthy notes and creamy finish..',
+       price: 14.95,
+       image: coffee1,
+     }
+     this.props.sendBeverage(mandhelingObj)
+     this.props.history.push('/addtocart')
+   }
+
+   getBrightSky = ()=>{
+     let brightskyObj = {
+       title: 'Bright Sky Coffee',
+       description: 'Gentle and well-rounded with hints of nut and nice acidity!',
+       price: 16.45,
+       image: coffee2,
+     }
+     this.props.sendBeverage(brightskyObj)
+     this.props.history.push('/addtocart')
+   }
+
+   getSumatra = ()=>{
+     let sumatraObj = {
+       title: 'Sumatra Coffee',
+       description: 'Full-bodied and smooth with lingering herbal flavors!',
+       price: 18.95,
+       image: coffee3,
+     }
+     this.props.sendBeverage(sumatraObj)
+     this.props.history.push('/addtocart')
+   }
+
+   getSantos = ()=>{
+     let santosObj = {
+       title: 'Brazil Santos (Mild)',
+       description: 'Santos has a special individual flavour and is smooth, full bodied with a little bitterness or acidity..',
+       price: 17.85,
+       image: coffee4,
+     }
+     this.props.sendBeverage(santosObj)
+     this.props.history.push('/addtocart')
+   }
+
+   getColombia = ()=>{
+     let colombiaObj = {
+       title: 'Colombia Coffee',
+       description: 'A smooth coffee with a signature nutty flavor..',
+       price: 22.90,
+       image: coffee5,
+     }
+     this.props.sendBeverage(colombiaObj)
+     this.props.history.push('/addtocart')
+   }
+
+   getVeranda = ()=>{
+     let verandaObj = {
+       title: 'Veranda Blend',
+       description: 'Subtle notes of soft cocoa and lightly toasted nuts!',
+       price: 15.95,
+       image: coffee6,
+     }
+     this.props.sendBeverage(verandaObj)
+     this.props.history.push('/addtocart')
+   }
+
+
+
+
   render() {
 
     let withUser = ''
@@ -35,7 +105,7 @@ class Beverages extends Component {
       withUser= <div><button className="btn btn-default dropdown-toggle dropbtn userloginbtn" type="button" data-toggle="dropdown" data-hover="dropdown">
           {this.props.username} <span className="caret"></span></button>
           <span className="fa-stack fa-x has-badge cartImg" data-count="">
-            <i className="fa fa-shopping-cart number">{this.props.itemCount}</i>
+            <Link to='/yourcart'><i className="fa fa-shopping-cart number">{this.props.itemCount}</i></Link>
             </span></div>
 
     } else {
@@ -103,7 +173,7 @@ class Beverages extends Component {
                                  <div className="caption-content">
                                      <h3 data-aos="zoom-in-left" data-aos-duration="3000" data-aos-delay="300" data-aos-once="true">Mandheling Blend</h3>
                                      <p className="mb-0">Full bodied to be savor as a thick treat. Traces of chocolate, earthy notes and creamy finish..</p>
-                                     <button class="btn-change7">Shop</button>
+                                     <button onClick={this.getMandheling} className="btn-change7">Shop</button>
                                  </div>
                              </div><img className="img-fluid" src={coffee1} /></a>
                      </div>
@@ -113,7 +183,7 @@ class Beverages extends Component {
                                  <div className="caption-content">
                                      <h3 data-aos="zoom-in-left" data-aos-duration="3000" data-aos-delay="200" data-aos-once="true">Bright Sky Blend</h3>
                                      <p className="mb-0">Gentle and well-rounded with hints of nut and nice acidity!</p>
-                                     <button class="btn-change7">Shop</button>
+                                     <button onClick={this.getBrightSky} className="btn-change7">Shop</button>
                                  </div>
                              </div><img className="img-fluid" src={coffee2} /></a>
                      </div>
@@ -123,7 +193,7 @@ class Beverages extends Component {
                                  <div className="caption-content">
                                      <h3 data-aos="fade-down-left" data-aos-duration="3000" data-aos-delay="300" data-aos-once="true">Sumatra</h3>
                                      <p className="mb-0">Full-bodied and smooth with lingering herbal flavors!</p>
-                                     <button class="btn-change7">Shop</button>
+                                     <button onClick={this.getSumatra} className="btn-change7">Shop</button>
                                  </div>
                              </div><img className="img-fluid" src={coffee3} /></a>
                      </div>
@@ -133,7 +203,7 @@ class Beverages extends Component {
                                  <div className="caption-content">
                                      <h3 data-aos="fade-down-left" data-aos-duration="3000" data-aos-delay="300" data-aos-once="true">Brazil Santos (Mild)</h3>
                                      <p className="mb-0">Santos has a special individual flavour and is smooth, full bodied with a little bitterness or acidity..</p>
-                                     <button class="btn-change7">Shop</button>
+                                     <button onClick={this.getSantos} className="btn-change7">Shop</button>
                                  </div>
                              </div><img className="img-fluid" src={coffee4} /></a>
                      </div>
@@ -144,7 +214,7 @@ class Beverages extends Component {
                                  <div className="caption-content">
                                      <h3 data-aos="fade-down-left" data-aos-duration="3000" data-aos-delay="300" data-aos-once="true">Colombia</h3>
                                      <p className="mb-0">A smooth coffee with a signature nutty flavor..</p>
-                                     <button class="btn-change7">Shop</button>
+                                     <button onClick={this.getColombia} className="btn-change7">Shop</button>
                                  </div>
                              </div><img className="img-fluid" src={coffee5} /></a>
                      </div>
@@ -155,7 +225,7 @@ class Beverages extends Component {
                                  <div className="caption-content">
                                      <h3 data-aos="fade-down-left" data-aos-duration="3000" data-aos-delay="300" data-aos-once="true">Veranda Blend</h3>
                                      <p className="mb-0">Subtle notes of soft cocoa and lightly toasted nuts!</p>
-                                     <button class="btn-change7">Shop</button>
+                                     <button onClick={this.getVeranda} className="btn-change7">Shop</button>
                                  </div>
                              </div><img className="img-fluid" src={coffee6} /></a>
                      </div>
@@ -197,7 +267,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     // this.props.onIncrementCounter
-        deleteToken : () => dispatch({type: "DELETETOKEN"})
+        deleteToken : () => dispatch({type: "DELETETOKEN"}),
+        sendBeverage : (obj) => dispatch({type: "BEVERAGE", obj: obj})
 
   }
 }

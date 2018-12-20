@@ -29,7 +29,7 @@ class HomePage extends Component {
       withUser= <div><button className="btn btn-default dropdown-toggle dropbtn userloginbtn" type="button" data-toggle="dropdown" data-hover="dropdown">
           {this.props.username} <span className="caret"></span></button>
           <span className="fa-stack fa-x has-badge cartImg" data-count="">
-            <i className="fa fa-shopping-cart number">{this.props.itemCount}</i>
+            <Link to='/yourcart'><i className="fa fa-shopping-cart number">{this.props.count}</i></Link>
             </span></div>
     } else {
        withoutUser= <button className="btn btn-default dropdown-toggle dropbtn" type="button" data-toggle="dropdown" data-hover="dropdown">
@@ -128,7 +128,7 @@ const mapStateToProps = (state) => {
     //ctr: state.counter // this.props.ctr
     token : state.token,
     username : state.username,
-    itemCount : state.itemCount
+    count : state.count
   }
 }
 

@@ -14,7 +14,7 @@ import pastry5 from '../assets/img/pastry5.png'
 import pastry6 from '../assets/img/pastry6.png'
 import '../assets/bootstrap/css/bootstrap.mini.css'
 
-class Cake extends Component {
+class Breadpastry extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -28,6 +28,76 @@ class Cake extends Component {
     history.push('/')
    }
 
+
+   getBreadcone = ()=>{
+     let breadconeObj = {
+       title: 'Bread Cones',
+       description: 'The fun food.. Lay cones on a baking sheet sprayed with non-stick spray.',
+       price: 5.95,
+       image: pastry1,
+     }
+     this.props.sendPastry(breadconeObj)
+     this.props.history.push('/addtocart')
+   }
+
+   getPastrybread = ()=>{
+     let pastrybreadObj = {
+       title: 'Pastry Bread',
+       description: 'Brighten up the morning by serving up any one of these delectable bread and pastry recipes for breakfast or brunch.',
+       price: 6.95,
+       image: pastry2,
+     }
+     this.props.sendPastry(pastrybreadObj)
+     this.props.history.push('/addtocart')
+   }
+
+   getFrench = ()=>{
+     let frenchObj = {
+       title: 'Classic French Raisin',
+       description: 'Pain aux raisin warm from the oven is a delight of French patisserie...',
+       price: 8.75,
+       image: pastry3,
+     }
+     this.props.sendPastry(frenchObj)
+     this.props.history.push('/addtocart')
+   }
+
+   getPainau = ()=>{
+     let painauObj = {
+       title: 'Pain Au Chocolat',
+       description: 'Uncommonly Made! Layer upon layer of light, butter flaky pastry..',
+       price: 7.95,
+       image: pastry4,
+     }
+     this.props.sendPastry(painauObj)
+     this.props.history.push('/addtocart')
+   }
+
+   getJewishrye = ()=>{
+     let jewishryeObj = {
+       title: 'Jewish Rye Bread',
+       description: 'Made with caraway seeds and various proportions of flour from rye grain.',
+       price: 4.95,
+       image: pastry5,
+     }
+     this.props.sendPastry(jewishryeObj)
+     this.props.history.push('/addtocart')
+   }
+
+   getArtisan = ()=>{
+     let artisanObj = {
+       title: 'Artisan Gluten Free Bread',
+       description: 'It uses no gums, doesn’t require eggs, and allows you to make a crusty, artisan style loaf of bread!',
+       price: 4.50,
+       image: pastry6,
+     }
+     this.props.sendPastry(artisanObj)
+     this.props.history.push('/addtocart')
+   }
+
+
+
+
   render() {
 
     let withUser = ''
@@ -36,7 +106,7 @@ class Cake extends Component {
       withUser= <div><button className="btn btn-default dropdown-toggle dropbtn userloginbtn" type="button" data-toggle="dropdown" data-hover="dropdown">
           {this.props.username} <span className="caret"></span></button>
           <span className="fa-stack fa-x has-badge cartImg" data-count="">
-            <i className="fa fa-shopping-cart number">{this.props.itemCount}</i>
+            <Link to='/yourcart'><i className="fa fa-shopping-cart number">{this.props.itemCount}</i></Link>
             </span></div>
     } else {
        withoutUser= <button className="btn btn-default dropdown-toggle dropbtn" type="button" data-toggle="dropdown" data-hover="dropdown">
@@ -103,7 +173,7 @@ class Cake extends Component {
                                  <div className="caption-content">
                                      <h3 data-aos="zoom-in-left" data-aos-duration="3000" data-aos-delay="300" data-aos-once="true">Bread Cones</h3>
                                      <p className="mb-0">Switch up your boring dinner plans and serve it in a bread cone! The fun food.. Lay cones on a baking sheet sprayed with non-stick spray.</p>
-                                     <button class="btn-change7">Shop</button>
+                                     <button onClick={this.getBreadcone} className="btn-change7">Shop</button>
                                  </div>
                              </div><img className="img-fluid" src={pastry1} /></a>
                      </div>
@@ -113,7 +183,7 @@ class Cake extends Component {
                                  <div className="caption-content">
                                      <h3 data-aos="zoom-in-left" data-aos-duration="3000" data-aos-delay="200" data-aos-once="true">Pastry Bread</h3>
                                      <p className="mb-0">Brighten up the morning by serving up any one of these delectable bread and pastry recipes for breakfast or brunch.</p>
-                                     <button class="btn-change7">Shop</button>
+                                     <button onClick={this.getPastrybread} className="btn-change7">Shop</button>
                                  </div>
                              </div><img className="img-fluid" src={pastry2} /></a>
                      </div>
@@ -123,7 +193,7 @@ class Cake extends Component {
                                  <div className="caption-content">
                                      <h3 data-aos="fade-down-left" data-aos-duration="3000" data-aos-delay="300" data-aos-once="true">Classic French Raisin</h3>
                                      <p className="mb-0">Pain aux raisin warm from the oven is a delight of French patisserie...</p>
-                                     <button class="btn-change7">Shop</button>
+                                     <button onClick={this.getFrench} className="btn-change7">Shop</button>
                                  </div>
                              </div><img className="img-fluid" src={pastry3} /></a>
                      </div>
@@ -133,7 +203,7 @@ class Cake extends Component {
                                  <div className="caption-content">
                                      <h3 data-aos="fade-down-left" data-aos-duration="3000" data-aos-delay="300" data-aos-once="true">Pain Au Chocolat</h3>
                                      <p className="mb-0">Uncommonly Made! Layer upon layer of light, butter flaky pastry..</p>
-                                     <button class="btn-change7">Shop</button>
+                                     <button onClick={this.getPainau} className="btn-change7">Shop</button>
                                  </div>
                              </div><img className="img-fluid" src={pastry4} /></a>
                      </div>
@@ -144,7 +214,7 @@ class Cake extends Component {
                                  <div className="caption-content">
                                      <h3 data-aos="fade-down-left" data-aos-duration="3000" data-aos-delay="300" data-aos-once="true">Jewish Rye Bread</h3>
                                      <p className="mb-0">Made with caraway seeds and various proportions of flour from rye grain.</p>
-                                     <button class="btn-change7">Shop</button>
+                                     <button onClick={this.getJewishrye} className="btn-change7">Shop</button>
                                  </div>
                              </div><img className="img-fluid" src={pastry5} /></a>
                      </div>
@@ -155,7 +225,7 @@ class Cake extends Component {
                                  <div className="caption-content">
                                      <h3 data-aos="fade-down-left" data-aos-duration="3000" data-aos-delay="300" data-aos-once="true">Artisan Style Gluten Free Bread</h3>
                                      <p className="mb-0">It uses no gums, doesn’t require eggs, and allows you to make a crusty, artisan style loaf of bread!</p>
-                                     <button class="btn-change7">Shop</button>
+                                     <button onClick={this.getArtisan} className="btn-change7">Shop</button>
                                  </div>
                              </div><img className="img-fluid" src={pastry6} /></a>
                      </div>
@@ -197,8 +267,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     // this.props.onIncrementCounter
 
-      deleteToken : () => dispatch({type: "DELETETOKEN"})
+      deleteToken : () => dispatch({type: "DELETETOKEN"}),
+        sendPastry : (obj) => dispatch({type: "PASTRY", obj: obj})
   }
 }
 
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Cake))
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Breadpastry))

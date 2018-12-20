@@ -23,7 +23,8 @@ const reducer = (state = initialState, action) => {
 
    return {
    ...state,
-   username : action.user.username
+   username : action.user.username,
+   userid : action.user.userid
 }
 
 } else if(action.type == "DELETETOKEN"){
@@ -39,7 +40,31 @@ const reducer = (state = initialState, action) => {
           ...state,
          Obj: action.obj
         }
-  }
+  } else if(action.type == "BEVERAGE"){
+
+         return {
+           ...state,
+          Obj: action.obj
+         }
+   } else if(action.type == "PASTRY"){
+
+          return {
+            ...state,
+           Obj: action.obj
+          }
+    } else if(action.type == "SMALLBITES"){
+
+           return {
+             ...state,
+            Obj: action.obj
+           }
+     } else if(action.type == "QUANTITY"){
+
+            return {
+              ...state,
+             count: action.count
+            }
+      }
 
  return state
 

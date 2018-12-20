@@ -3,10 +3,11 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import '../assets/bootstrap/css/bootstrap.min.css'
 import '../assets/bootstrap/css/homepage.css'
+import {Link, NavLink} from 'react-router-dom'
 import axios from 'axios'
 import history from '../history';
 
-class Register extends Component {
+class Checkout extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -18,7 +19,14 @@ class Register extends Component {
 
 
     return(
-        <div></div>
+        <div>
+
+
+
+
+
+
+        </div>
     )
   }
 }
@@ -44,4 +52,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Register))
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Checkout))

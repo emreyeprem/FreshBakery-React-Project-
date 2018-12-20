@@ -3,6 +3,10 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import '../assets/bootstrap/css/bootstrap.min.css'
 import '../assets/bootstrap/css/homepage.css'
+import '../assets/bootstrap/css/bootstrap.mini.css'
+import {Link, NavLink} from 'react-router-dom'
+import history from '../history';
+import axios from 'axios'
 
 class Footer extends Component {
   constructor(props){

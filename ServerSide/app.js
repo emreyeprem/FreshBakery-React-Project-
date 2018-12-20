@@ -111,3 +111,38 @@ app.post('/api/login',function(req,res){
 
   })
 })
+
+app.post('/api/sendcart',function(req,res){
+  let title = req.body.title
+  let quantity = req.body.quantity
+  let userid = req.body.userid
+  let price = req.body.price
+  let finalprice = req.body.finalprice
+
+  db.none('INSERT INTO products (producttitle,price,quantity,userid,finalprice) VALUES ($1,$2,$3,$4,$5)',[title,price,quantity,userid,finalprice]).then(function(){
+    res.json({success : true})
+  })
+})
+
+app.post('/api/usercart',function(req,res){
+  let userid = req.body.userid
+  console.log(userid)
+  db.any('SELECT id,producttitle,price,quantity,finalprice FROM products WHERE userid = $1',[userid]).then(function(response){
+    let arr = response.map((each)=>{
+        return parseFloat(each.finalprice)
+
+    })
+    console.log(arr)
+    let sum = arr.reduce((a,b)=> a+b,0)
+    console.log(sum)
+      // res.json({response: response, sum: sum})
+
+
+    let itemQuantity = response.map((each)=>{
+      return each.quantity
+    })
+      let sumQuantity = itemQuantity.reduce((a,b)=> a+b,0)
+      res.json({response: response, sum: sum, sumQuantity: sumQuantity})
+
+  })
+})
