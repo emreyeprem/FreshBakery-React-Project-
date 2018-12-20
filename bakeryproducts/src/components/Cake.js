@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom'
 import {Link, NavLink} from 'react-router-dom'
 import '../assets/bootstrap/css/bootstrap.min.css'
 import '../assets/bootstrap/css/homepage.css'
+import history from '../history';
+import axios from 'axios'
 import cake1 from '../assets/img/cake1.png'
 import cake2 from '../assets/img/cake2.png'
 import cake3 from '../assets/img/cake3.png'
@@ -20,7 +22,37 @@ class Cake extends Component {
     }
   }
 
+  logout = ()=>{
+    localStorage.clear()
+    this.props.deleteToken()
+    history.push('/')
+   }
+   getBrown = ()=>{
+     let brownObj = {
+       title: 'Brown Forest Cake',
+       description: 'Several layers of chocolate sponge cake sandwiched with whipped cream and cherries!',
+       price: 18.85,
+       image: cake5,
+
+     }
+     this.props.sendCake(brownObj)
+     this.props.history.push('/addtocart')
+   }
+
   render() {
+
+    let withUser = ''
+    let withoutUser = ''
+    if(!this.props.token==''){
+      withUser= <div><button className="btn btn-default dropdown-toggle dropbtn userloginbtn" type="button" data-toggle="dropdown" data-hover="dropdown">
+          {this.props.username} <span className="caret"></span></button>
+          <span className="fa-stack fa-x has-badge cartImg" data-count="">
+            <i className="fa fa-shopping-cart number">{this.props.itemCount}</i>
+            </span></div>
+    } else {
+       withoutUser= <button className="btn btn-default dropdown-toggle dropbtn" type="button" data-toggle="dropdown" data-hover="dropdown">
+         My Account <span className="caret"></span></button>
+    }
 
 
     return(
@@ -32,8 +64,8 @@ class Cake extends Component {
                  <div
                      className="collapse navbar-collapse" id="navbarResponsive">
                      <ul className="nav navbar-nav mx-auto">
-                         <li className="nav-item" role="presentation"><a className="nav-link" href="/">Home</a></li>
-                         <li className="nav-item" role="presentation"><a className="nav-link" href="about">About us</a></li>
+                      <li className="nav-item" role="presentation"><Link to='/' className="nav-link" >Home</Link></li>
+                      <li className="nav-item" role="presentation"><Link to='/about' className="nav-link" >About us</Link></li>
 
 
                          <ul className="dropdown">
@@ -46,15 +78,16 @@ class Cake extends Component {
                                </ul>
                              </ul>
 
-                         <li className="nav-item" role="presentation"><a className="nav-link" href="store">Store</a></li>
+                           <li className="nav-item" role="presentation"><Link to='/store' className="nav-link" >Store</Link></li>
 
                <ul className="dropdown">
-                 <button className="btn btn-default dropdown-toggle dropbtn" type="button" data-toggle="dropdown" data-hover="dropdown">
-                  My Account <span className="caret"></span>
-                 </button>
+
+                {withUser}{withoutUser}
+
                  <ul className="dropdown-menu">
                  <Link to="/login"><li className="nav-item"><a href="#" >Login</a></li></Link>
                  <Link to="/login"><li className="nav-item"><a href="#" >Register</a></li></Link>
+                 <li className="nav-item"><a href="#" onClick={this.logout} >Logout</a></li>
                  </ul>
                </ul>
 
@@ -121,7 +154,7 @@ class Cake extends Component {
                                  <div className="caption-content">
                                      <h3 data-aos="fade-down-left" data-aos-duration="3000" data-aos-delay="300" data-aos-once="true">Brown Forest Cake</h3>
                                      <p className="mb-0">Several layers of chocolate sponge cake sandwiched with whipped cream and cherries!</p>
-                                     <button class="btn-change7">Shop</button>
+                                     <button onClick={this.getBrown} class="btn-change7">Shop</button>
                                  </div>
                              </div><img className="img-fluid" src={cake5} /></a>
                      </div>
@@ -161,6 +194,9 @@ const mapStateToProps = (state) => {
 
      //this.props.isAuthenticated
     //ctr: state.counter // this.props.ctr
+    token : state.token,
+    username : state.username,
+    itemCount : state.itemCount
   }
 }
 
@@ -170,7 +206,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     // this.props.onIncrementCounter
-
+      deleteToken : () => dispatch({type: "DELETETOKEN"}),
+      sendCake : (obj) => dispatch({type: "CAKE", obj: obj})
 
   }
 }

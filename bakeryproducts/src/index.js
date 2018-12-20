@@ -14,7 +14,7 @@ import Login from './components/Login'
 import Register from './components/Register'
 import HomePage from './components/HomePage'
 import Products from './components/Products'
-import Coffee from './components/Coffee'
+import Addtocart from './components/Addtocart'
 import Cake from './components/Cake'
 import Beverages from './components/Beverages'
 import Breadpastry from './components/Breadpastry'
@@ -41,7 +41,7 @@ ReactDOM.render(
      <Route path="/about" component={About}/>
      <Route path="/store" component={Store}/>
      <Route path="/products" component={Products} />
-     <Route path="/coffee" component={Coffee} />
+     <Route path="/addtocart" component={Addtocart} />
      <Route path="/breadpastry" component={Breadpastry}/>
      <Route path="/cakes" component={Cake}/>
      <Route path="/smallbites" component={Smallbites}/>

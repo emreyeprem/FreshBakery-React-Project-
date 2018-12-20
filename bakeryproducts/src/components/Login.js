@@ -101,6 +101,7 @@ class Login extends Component {
           message : response.data
         })
       } else{
+        console.log()
         this.props.user(response.data.user)
         this.props.authenticate(response.data.token)
         localStorage.setItem('jsonwebtoken',response.data.token)
@@ -208,7 +209,7 @@ const mapDispatchToProps = (dispatch) => {
     // this.props.onIncrementCounter
 
    authenticate: (token) => dispatch({type: "AUTHENTICATED", token: token}),
-   user: (user) => dispatch({type: "USER", user: user})
+   user: (user) => dispatch({type: "USER", user: user}) //user is coming as object including username, password, email
 
   }
 }

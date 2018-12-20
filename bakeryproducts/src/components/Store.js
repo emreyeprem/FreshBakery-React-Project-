@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom'
 import {Link, NavLink} from 'react-router-dom'
 import '../assets/bootstrap/css/bootstrap.min.css'
 import '../assets/bootstrap/css/homepage.css'
+import history from '../history';
+import axios from 'axios'
 import store from '../assets/img/stores.png'
 import bakery from '../assets/img/bakery5.png'
 
@@ -15,8 +17,26 @@ class Store extends Component {
     }
   }
 
+  logout = ()=>{
+    localStorage.clear()
+    this.props.deleteToken()
+    history.push('/')
+   }
+
   render() {
 
+    let withUser = ''
+    let withoutUser = ''
+    if(!this.props.token==''){
+      withUser= <div><button className="btn btn-default dropdown-toggle dropbtn userloginbtn" type="button" data-toggle="dropdown" data-hover="dropdown">
+          {this.props.username} <span className="caret"></span></button>
+          <span className="fa-stack fa-x has-badge cartImg" data-count="">
+            <i className="fa fa-shopping-cart number">{this.props.itemCount}</i>
+            </span></div>
+    } else {
+       withoutUser= <button className="btn btn-default dropdown-toggle dropbtn" type="button" data-toggle="dropdown" data-hover="dropdown">
+         My Account <span className="caret"></span></button>
+    }
 
     return(
       <div>
@@ -29,8 +49,8 @@ class Store extends Component {
               <div
                   className="collapse navbar-collapse" id="navbarResponsive">
                   <ul className="nav navbar-nav mx-auto">
-                      <li className="nav-item" role="presentation"><a className="nav-link" href="/">Home</a></li>
-                      <li className="nav-item" role="presentation"><a className="nav-link" href="about">About us</a></li>
+                    <li className="nav-item" role="presentation"><Link to='/' className="nav-link" >Home</Link></li>
+                    <li className="nav-item" role="presentation"><Link to='/about' className="nav-link" >About us</Link></li>
 
 
                       <ul className="dropdown">
@@ -43,15 +63,16 @@ class Store extends Component {
                             </ul>
                           </ul>
 
-                      <li className="nav-item" role="presentation"><a className="nav-link" href="store">Store</a></li>
+                      <li className="nav-item" role="presentation"><Link to='/store' className="nav-link" >Store</Link></li>
 
             <ul className="dropdown">
-              <button className="btn btn-default dropdown-toggle dropbtn" type="button" data-toggle="dropdown" data-hover="dropdown">
-               My Account <span className="caret"></span>
-              </button>
+
+              {withUser}{withoutUser}
+
               <ul className="dropdown-menu">
               <Link to="/login"><li className="nav-item"><a href="#" >Login</a></li></Link>
               <Link to="/login"><li className="nav-item"><a href="#" >Register</a></li></Link>
+              <li className="nav-item"><a href="#" onClick={this.logout} >Logout</a></li>
               </ul>
             </ul>
 
@@ -119,6 +140,9 @@ const mapStateToProps = (state) => {
 
      //this.props.isAuthenticated
     //ctr: state.counter // this.props.ctr
+    token : state.token,
+    username : state.username,
+    itemCount : state.itemCount
   }
 }
 
@@ -129,7 +153,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     // this.props.onIncrementCounter
 
-
+     deleteToken : () => dispatch({type: "DELETETOKEN"})
   }
 }
 
