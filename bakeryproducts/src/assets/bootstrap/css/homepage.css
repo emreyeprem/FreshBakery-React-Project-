@@ -178,8 +178,35 @@ font-weight: bold;
   margin-top: 20% !important;
 }
 
+.mycart{
+  color : #fff !important;
+  margin-left : 44vw;
+  margin-bottom : 5vw !important;
+}
 
+@media screen and (max-width: 667px) {
+  .dropbtn{
+    margin-left: -55px !important;
+  }
+  .cartImg{
+    margin-left: 55vw;
+    margin-top: -40vw;
+    font-family: 'Amita', cursive !important;
+  }
+}
+/* =============== stripe ============= */
 
+.StripeCheckout span{
+  visibility:hidden;
+}
+.StripeCheckout span:after{
+ content: 'Checkout';
+ visibility:visible;
+ margin-left: -90px;
+}
+.StripeCheckout{
+ width: 180px;
+}
 
 /* ================== Add to Cart ======================= */
 .itemDescription{

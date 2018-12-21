@@ -6,11 +6,21 @@ const pgp= require('pg-promise')()
 const connectionString = "postgres://localhost:5432/pastrydb"
 const db = pgp(connectionString)
 const bcrypt = require('bcryptjs');
-var cors = require('cors')
+//var cors = require('cors')
 const jwt = require('jsonwebtoken')
-app.use(cors())
+
 // parse application/json
 app.use(bodyParser.json())
+
+
+const SERVER_CONFIGS = require('./constants/server');
+
+const configureServer = require('./server');
+const configureRoutes = require('./routes');
+
+
+configureServer(app);
+configureRoutes(app);
 //-----------------to enable CORS-------
 app.use(function(req, res, next) {
   //
@@ -144,5 +154,11 @@ app.post('/api/usercart',function(req,res){
       let sumQuantity = itemQuantity.reduce((a,b)=> a+b,0)
       res.json({response: response, sum: sum, sumQuantity: sumQuantity})
 
+  })
+})
+app.post('/api/getitemcount',function(req,res){
+  let userid = req.body.userid
+  db.any('select quantity from products where userid=$1',[userid]).then((array)=>{
+    res.json(array.length)
   })
 })

@@ -34,6 +34,8 @@ class Addtocart extends Component {
   }
 
   addItemButton = () =>{
+  let newItemCount = this.props.cartcount + 1
+  this.props.getNewItemCount(newItemCount)
   axios.post('http://localhost:3005/api/sendcart',{
      title : this.props.obj.title,
      quantity : this.state.quantity,
@@ -93,7 +95,7 @@ class Addtocart extends Component {
       <tfoot>
 
         <tr>
-          <td><button className="btn btn-warning"><i className="fa fa-angle-left"></i> Continue Shopping</button></td>
+          <td><Link to='/products'><button className="btn btn-warning"><i className="fa fa-angle-left"></i> Continue Shopping</button></Link></td>
           <td colspan="2" className="hidden-xs"></td>
           <td className="hidden-xs text-center itemDescription"><strong>Total ${this.state.finalprice}</strong></td>
           <td><button onClick={this.addItemButton} className="btn btn-success btn-block addtocartButton">Add to Cart <i className="fa fa-angle-right"></i></button></td>
@@ -114,7 +116,8 @@ class Addtocart extends Component {
 const mapStateToProps = (state) => {
   return {
       obj : state.Obj,
-      userid : state.userid
+      userid : state.userid,
+      cartcount : state.cartcount
      //this.props.isAuthenticated
     //ctr: state.counter // this.props.ctr
   }
@@ -127,7 +130,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     // this.props.onIncrementCounter
 
-
+      getNewItemCount : (count) => dispatch({type: "UPDATEITEMCOUNT",itemCount: count})
   }
 }
 

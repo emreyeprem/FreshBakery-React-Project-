@@ -6,6 +6,7 @@ import '../assets/bootstrap/css/homepage.css'
 import {Link, NavLink} from 'react-router-dom'
 import axios from 'axios'
 import history from '../history';
+import Checkout from '../Checkout'
 
 class Yourcart extends Component {
   constructor(props){
@@ -23,7 +24,7 @@ class Yourcart extends Component {
       this.setState({
         ...this.state,
              userproducts: response.data.response,
-             totalcost: response.data.sum
+             totalcost: response.data.sum.toFixed(2)
 
              })
 
@@ -58,7 +59,7 @@ class Yourcart extends Component {
             <td data-th="Subtotal" className="text-center itemDescription">{each.finalprice}</td>
             <td className="actions" data-th="">
               <button className="btn btn-info btn-sm"><i className="fa fa-refresh"></i></button>
-              <button className="btn btn-danger btn-sm"><i className="fa fa-trash-o"></i></button>
+              <button className="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
             </td>
           </tr>
         </tbody>
@@ -69,7 +70,7 @@ class Yourcart extends Component {
 
     return(
         <div className="addCartContainer">
-
+            <h2 className="mycart">Your Shopping Bag</h2>
 
         <div className="container ">
          <table id="cart" className="table table-hover table-condensed">
@@ -90,7 +91,7 @@ class Yourcart extends Component {
             <Link to='/addtocart'><td><button className="btn btn-warning"><i className="fa fa-angle-left"></i> Go back</button></td></Link>
             <td colspan="2" className="hidden-xs"></td>
             <td className="hidden-xs text-center itemDescription"><strong>Total $ {this.state.totalcost}</strong></td>
-            <td><button onClick={this.checkout} className="btn btn-success btn-block addtocartButton">Checkout <i className="fa fa-angle-right"></i></button></td>
+            <Checkout name={'FRESH BAKERY'} description={'Happiness Starts Here…'} amount={this.state.totalcost}/>
           </tr>
         </tfoot>
       </table>

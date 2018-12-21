@@ -14,7 +14,13 @@ class HomePage extends Component {
 
     }
   }
-
+  componentDidMount=()=>{
+    axios.post('http://localhost:3005/api/getitemcount',{
+      userid: this.props.userid
+    }).then((res)=>{
+      this.props.senditemcartcount(res.data)
+    })
+  }
   logout = ()=>{
     localStorage.clear()
     this.props.deleteToken()
@@ -29,7 +35,7 @@ class HomePage extends Component {
       withUser= <div><button className="btn btn-default dropdown-toggle dropbtn userloginbtn" type="button" data-toggle="dropdown" data-hover="dropdown">
           {this.props.username} <span className="caret"></span></button>
           <span className="fa-stack fa-x has-badge cartImg" data-count="">
-            <Link to='/yourcart'><i className="fa fa-shopping-cart number">{this.props.count}</i></Link>
+            <Link to='/yourcart'><i className="fa fa-shopping-cart number">{this.props.cartcount}</i></Link>
             </span></div>
     } else {
        withoutUser= <button className="btn btn-default dropdown-toggle dropbtn" type="button" data-toggle="dropdown" data-hover="dropdown">
@@ -128,7 +134,9 @@ const mapStateToProps = (state) => {
     //ctr: state.counter // this.props.ctr
     token : state.token,
     username : state.username,
-    count : state.count
+  itemCount : state.itemCount,
+  userid : state.userid,
+  cartcount:state.cartcount
   }
 }
 
@@ -138,8 +146,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     // this.props.onIncrementCounter
-
+      senditemcartcount : (count)=>{dispatch({type: "ITEMCARTCOUNT",cartcount: count})},
       deleteToken : () => dispatch({type: "DELETETOKEN"})
+
   }
 }
 

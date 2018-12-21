@@ -5,7 +5,8 @@ const initialState = {
 
   token : token? token: '',
   username : '',
-  itemCount : 0
+
+  cartcount: 0,
 
 
 }
@@ -65,7 +66,19 @@ const reducer = (state = initialState, action) => {
              count: action.count
             }
       }
+      else if(action.type == "UPDATEITEMCOUNT"){
 
+             return {
+               ...state,
+              cartcount: action.itemCount
+             }
+       }else if(action.type == "ITEMCARTCOUNT"){
+
+              return {
+                ...state,
+               cartcount: action.cartcount
+              }
+        }
  return state
 
 }
