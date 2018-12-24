@@ -1,7 +1,7 @@
 ## A Full Stack ECommerce App using React / Redux with PostgreSQL database 
 ## FreshBakery-React App using Stripe Api
 
-<div><img src="html.png" style="width:50%; height: 50%;" /></div>
+<div><img src="html.png" style="width:4vw !important; height: 4vw !important;" /></div>
 * **Purpose of the app:** 
    This e-commerce site has been built to sell coffee and bakery products online. Clients are able to choose various baked pastries and keep them in their shopping bag. They can also create their own account and make a payment by using credit cards. 
    
