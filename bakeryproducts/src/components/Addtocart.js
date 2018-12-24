@@ -54,12 +54,67 @@ class Addtocart extends Component {
 
   render() {
 
+    let withUser = ''
+    let withoutUser = ''
+    if(!this.props.token==''){
+      withUser= <div><button className="btn btn-default dropdown-toggle dropbtn userloginbtn" type="button" data-toggle="dropdown" data-hover="dropdown">
+          {this.props.username} <span className="caret"></span></button>
+          <span className="fa-stack fa-x has-badge cartImg" data-count="">
+            <Link to='/yourcart'><i className="fa fa-shopping-cart number">{this.props.cartcount}</i></Link>
+            </span></div>
+    } else {
+       withoutUser= <button className="btn btn-default dropdown-toggle dropbtn" type="button" data-toggle="dropdown" data-hover="dropdown">
+         My Account <span className="caret"></span></button>
+    }
+
 
     return(
       <div className="addCartContainer">
 
 
-      <div className="container ">
+
+      <nav className="navbar navbar-light navbar-expand-lg bg-dark py-lg-4 navbar-Container cartNav" id="mainNav">
+          <div className="container"><a className="navbar-brand text-uppercase d-lg-none text-expanded" href="#">Fresh Bakery</a><button className="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
+              <div
+                  className="collapse navbar-collapse" id="navbarResponsive">
+                  <ul className="nav navbar-nav mx-auto">
+                   <li className="nav-item" role="presentation"><Link to='/' className="nav-link" >Home</Link></li>
+                   <li className="nav-item" role="presentation"><Link to='/about' className="nav-link" >About us</Link></li>
+
+
+                      <ul className="dropdown">
+                          <Link to="/products"><button className="btn btn-default dropdown-toggle dropbtn" type="button" data-toggle="dropdown" data-hover="dropdown">Products<span className="caret"></span></button></Link>
+                            <ul className="dropdown-menu">
+                              <Link to="/cakes"><li className="nav-item"><a href="#" >Cakes</a></li></Link>
+                              <Link to="/breadpastry"><li className="nav-item"><a href="#" >Bread & Pastry</a></li></Link>
+                              <Link to="/smallbites"><li className="nav-item"><a href="#" >Small Bites</a></li></Link>
+                              <Link to="/beverages"><li className="nav-item"><a href="#" >Beverages</a></li></Link>
+                            </ul>
+                          </ul>
+
+                        <li className="nav-item" role="presentation"><Link to='/store' className="nav-link" >Store</Link></li>
+
+            <ul className="dropdown">
+
+             {withUser}{withoutUser}
+
+              <ul className="dropdown-menu">
+              <Link to="/login"><li className="nav-item"><a href="#" >Login</a></li></Link>
+              <Link to="/login"><li className="nav-item"><a href="#" >Register</a></li></Link>
+              <li className="nav-item"><a href="#" onClick={this.logout} >Logout</a></li>
+              </ul>
+            </ul>
+
+
+       </ul>
+            </div>
+          </div>
+      </nav>
+
+
+
+
+      <div className="container cartContainerAddCart">
        <table id="cart" className="table table-hover table-condensed">
         <thead>
         <tr className="trline">
