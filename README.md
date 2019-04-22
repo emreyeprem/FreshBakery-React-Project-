@@ -29,4 +29,4 @@ https://youtu.be/sPWTFYCHJx8
 This project is built using "PostgreSQL".
 
 ## Featured programs: 
-JavaScript,PostgreSQL,React.js,Redux,HTML,CSS,Bootstrap.
+JavaScript,PostgreSQL,Node,Express.js,React.js,Redux,HTML,CSS,Bootstrap.
